@@ -1,0 +1,9 @@
+<h1><%= @blogpost.title %></h1>
+<h3>Written by: <a href="/users/<%= @blogpost.user_id %>"><%= @blogpost.user.username %></a></h3>
+<small><strong>Created: <%= @blogpost.created_at %></strong></small>
+<div><%= @blogpost.content %></div>
+<textarea rows="4" col="50" form="comment_form">Enter Your Comment Here</textarea>
+<form action="/comments" method="post" id="comment_form">
+    <input type="submit">
+</form>
+# previous comments - loop through all comments that belong to the blogpost 

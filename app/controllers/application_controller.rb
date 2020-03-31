@@ -6,8 +6,8 @@ class ApplicationController < Sinatra::Base
         set :session_secret, "secret"
     end
 
-    get '/home' do 
-        erb :welcome #the welcome page is not rendering
-        "Welcome!"
+    get '/' do 
+        erb :welcome 
     end
+
 end

@@ -15,11 +15,11 @@
         <% if Helpers.is_logged_in?(session) %>
             <nav class="navbar">
                 <ul>
-                    <li><a href="#">Log Out</a></li>
-                    <li><a href="#">My Blog Posts</a></li>
-                    <li><a href="#">New Blog Post</a></li>
-                    <li><a href="#">All Blog Posts</a></li>
+                    <li><a href="/users/<%= Helpers.current_user(session).id %>">My Blog Posts</a></li>
+                    <li><a href="/blogposts/new">New Blog Post</a></li>
+                    <li><a href="/blogposts">All Blog Posts</a></li>
                     <li><a href="#">All Users</a></li>
+                    <li><a href="/logout">Log Out</a></li>
                 </ul>
             </nav>
         <% end %>
@@ -27,7 +27,7 @@
         <%= yield %>
 
         <footer>
-            <small>&copy; 2020 <strong>Sinatra Travel Blog</strong> Coded with <3 by <a href="https://github.com/OlesyaMiller">Olesya Miller</a></small>
+            <small>&copy; 2020 <strong>Sinatra Travel Blog</strong> Coded with &hearts; by <a href="https://github.com/OlesyaMiller">Olesya Miller</a></small>
         </footer>
 
     </div>
