@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+    <div class="container">
+        <h3><a href="/users/<%= user.id %>"><%= user.username %></a></h3>
+    </div>
+<% end %>

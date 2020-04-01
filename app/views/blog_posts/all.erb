@@ -1,6 +1,6 @@
 <% @blogposts.each do |blogpost| %>
     <div class="container">
-        <h3>Title: <%= blogpost.title %></h3>
+        <h3>Title: <a href="/blogposts/<%= blogpost.id %>"><%= blogpost.title %></a></h3>
         <h3>Written by: <%= blogpost.user.username %></h3>
         <small><strong><%= blogpost.created_at %></strong></small>
         <p><%= blogpost.content %></p>

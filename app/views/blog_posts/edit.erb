@@ -1,0 +1,12 @@
+<h1>Edit Your Blog Post Here</h1>
+
+<form action="/blogposts/<%= @blogpost.id %>" method="post" id="blog_post_form">
+    <input type="hidden" name="_method" value="patch">
+    <label>Your Name: </label>
+    <input type="text" name="blogpost[author_name]"> <br>
+    <label>Title: </label>
+    <input type="text" name="blogpost[title]"> <br>
+    <input type="submit" value="Edit Post">
+</form>
+
+<textarea rows="4" cols="50" name="blogpost[content]" form="blog_post_form" value="<%= @blogpost.content %>"></textarea>
