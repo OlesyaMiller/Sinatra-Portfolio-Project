@@ -11,10 +11,10 @@ class BlogPostsController < ApplicationController
 
     post '/blogposts' do
         if Helpers.is_logged_in?(session)
-            if params["content"] == "" || params["author_name"] == "" || params["title"] == ""
+            blogpost = BlogPost.create(params)
+            if blogpost.invalid?
                 redirect to '/blogposts/new'
             else
-                blogpost = BlogPost.create(params)
                 user = Helpers.current_user(session)
                 blogpost.user = user 
                 blogpost.save 
@@ -56,7 +56,11 @@ class BlogPostsController < ApplicationController
         blogpost = BlogPost.find_by_id(params["id"])
         if blogpost && Helpers.current_user(session) == blogpost.user 
             blogpost.update(params["blogpost"])
-            redirect to "/blogposts/#{blogpost.id}"
+            if blogpost.valid?
+                redirect to "/blogposts/#{blogpost.id}"
+            else
+                redirect to "/blogposts/#{blogpost.id}/edit"
+            end
         else
             redirect to '/blogposts'
         end

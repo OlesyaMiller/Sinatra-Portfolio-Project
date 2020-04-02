@@ -1,11 +1,16 @@
-<h2><%= @user.username %></h2>
+<div class="container">
+<h2><small>User:</small> <%= @user.username %></h2>
 
 <h3><%= @user.username %>'s Blog Posts:</h3>
-
-<% @blogposts.each do |blogpost| %>  
-    <div class="container">
-        <h4><a href="/blogposts/<%= blogpost.id %>"><%= blogpost.title %></a></h4>
-        <small><strong>Created: <%= blogpost.created_at %></strong></small><br>
-        <content><%= blogpost.content %></content>
-    </div>
-<% end %>
+<br>
+<% if @blogposts.empty? %>
+    <p class="notification"><%= @user.username %> doesn't have any blog posts yet</p>
+<% else %>    
+    <% @blogposts.each do |blogpost| %>  
+        <div class="container">
+            <h4><a href="/blogposts/<%= blogpost.id %>"><%= blogpost.title.titleize %></a></h4>
+            <small><strong>Created: <%= blogpost.created_at %></strong></small><br>
+        </div>
+    <% end %>
+<% end %>    
+</div>

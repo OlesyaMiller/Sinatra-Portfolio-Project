@@ -6,31 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Travel Blog</title>
+    <style>
+        body {
+            background-image: url("https://img2.thejournal.ie/article/4714713/river?version=4714719&width=1340") ;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+        }
+        h1, h2, h3, h4, h5 {
+            color: white;
+        }
+        a {
+            color: rgba(210, 245, 201);
+            text-decoration: underline;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        a:hover {
+            color: rgba(20, 219, 156);
+        }
+        .notification {
+            color: white;
+        }
+        small {
+            color: white;
+        }
+        .color {
+            color: white;
+        }
+    </style>
   </head>
 
   <body>
-
-    <div class="container">
-
-        <% if Helpers.is_logged_in?(session) %>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="/users/<%= Helpers.current_user(session).id %>">My Blog Posts</a></li>
-                    <li><a href="/blogposts/new">New Blog Post</a></li>
-                    <li><a href="/blogposts">All Blog Posts</a></li>
-                    <li><a href="/users">All Users</a></li>
-                    <li><a href="/logout">Log Out</a></li>
-                </ul>
-            </nav>
-        <% end %>
+  <% if Helpers.is_logged_in?(session) %>
+    <header class="navbar navbar-expand bg-dark navbar-dark flex-column flex-md-row bd-navbar">
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item"><a class="nav-link" href="/users/<%= Helpers.current_user(session).id %>">My Blog Posts</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blogposts/new">New Blog Post</a></li>
+                <li class="nav-item"><a class="nav-link" href="/blogposts">All Blog Posts</a></li>
+                <li class="nav-item"><a class="nav-link" href="/users">All Users</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+            </ul>
+        </div>  
+        <span class="navbar-text float-right"><strong>Signed in as <a href="/users/<%= Helpers.current_user(session).id %>"><%= Helpers.current_user(session).username %></strong></a></span>
+    </header>
+    <br><br>
+  <% end %>
 
         <%= yield %>
 
-        <footer>
-            <small>&copy; 2020 <strong>Sinatra Travel Blog</strong> Coded with &hearts; by <a href="https://github.com/OlesyaMiller">Olesya Miller</a></small>
-        </footer>
+  <br><br><br><br>
+  <footer class="footer fixed-bottom p-3 bg-dark" style="color: white">
+      <div class="container">
+          <small>&copy; 2020 <strong>Sinatra Travel Blog</strong> Coded with &hearts; by <a href="https://github.com/OlesyaMiller">Olesya Miller</a></small>
+      </div>
+  </footer>
 
-    </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

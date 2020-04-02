@@ -1,4 +1,6 @@
-<h1><%= @blogpost.title %></h1>
+<div class="container">
+
+<h1><%= @blogpost.title.titleize %></h1>
 
 <% if Helpers.current_user(session) == @blogpost.user %>
     <h4><a href="/blogposts/<%= @blogpost.id %>/edit">Edit</a></h4>
@@ -7,22 +9,31 @@
         <input type="submit" value="Delete">
     </form>
 <% end %>
-
-<h3>Written by: <a href="/users/<%= @blogpost.user_id %>"><%= @blogpost.user.username %></a></h3>
+<br>
+<h4><small>Written by: </small><a href="/users/<%= @blogpost.user_id %>"><%= @blogpost.user.username %></a></h4>
 <small><strong>Created: <%= @blogpost.created_at %></strong></small>
-<div><%= @blogpost.content %></div>
+<br><br>
+<div class="border rounded p-3 content"><%= @blogpost.content %></div>
 <br><br>
 
 <% @blogpost.comments.each do |comment| %>
     <div class="container">
-        <%= comment.content %><br>
-        <small><strong>Created: <%= comment.created_at %></strong></small><br>
-        <small><strong>Posted by: <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a></strong></small><br><br>
+        <div class="border rounded p-3 content">
+            <%= comment.content %><br>
+            <small><strong>Created: <%= comment.created_at %></strong></small><br>
+            <small><strong>Posted by: <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a></strong></small>
+        </div>    
     </div>
+    <br>
 <% end %>
 
-<textarea rows="4" col="50" form="comment_form" name="content">Enter Your Comment Here</textarea>
-<form action="/comments" method="post" id="comment_form">
-    <input type="hidden" name="blog_post_id" value="<%= @blogpost.id %>">
-    <input type="submit">
-</form>
+<div class="container">
+    <form action="/comments" method="post" id="comment_form">
+        <input type="hidden" name="blog_post_id" value="<%= @blogpost.id %>">
+        <div class="form-group">
+            <textarea class="form-control" form="comment_form" name="content">Enter Your Comment Here</textarea>
+        </div>    
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>    
+</div>

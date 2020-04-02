@@ -1,11 +1,18 @@
+<div class="container">
 <h2>Create Your Blog Post Here:</h2>
 
 <form action="/blogposts" method="post" id="blog_post_form">
-    <label>Your Name: </label>
-    <input type="text" name="author_name"> <br>
-    <label>Title: </label>
-    <input type="text" name="title"> <br>
-    <input type="submit">
+    <div class="form-group">
+        <label class="color">Your Name: </label>
+        <input class="form-control" type="text" name="author_name"> 
+    </div>
+    <div class="form-group">
+        <label class="color">Title: </label>
+        <input class="form-control" type="text" name="title"> <br>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" name="content" form="blog_post_form">Enter Your Blog Post Text Here</textarea>
+    </div>    
+    <button type="submit" class="btn btn-info">Submit</button>
 </form>
-
-<textarea rows="4" cols="50" name="content" form="blog_post_form">Enter Your Blog Post Text Here</textarea>
+</div>

@@ -1,12 +1,19 @@
+<div class="container">
 <h1>Edit Your Blog Post Here</h1>
 
 <form action="/blogposts/<%= @blogpost.id %>" method="post" id="blog_post_form">
     <input type="hidden" name="_method" value="patch">
-    <label>Your Name: </label>
-    <input type="text" name="blogpost[author_name]"> <br>
-    <label>Title: </label>
-    <input type="text" name="blogpost[title]"> <br>
-    <input type="submit" value="Edit Post">
+    <div class="form-group">
+        <label class="color">Your Name: </label>
+        <input class="form-control" type="text" value="<%= @blogpost.author_name %>" name="blogpost[author_name]"> 
+    </div>
+    <div class="form-group">    
+        <label class="color">Title: </label>
+        <input class="form-control" type="text" value="<%= @blogpost.title %>" name="blogpost[title]"> 
+    </div>    
+    <div class="form-group">
+        <textarea class="form-control" name="blogpost[content]" form="blog_post_form"><%= @blogpost.content %></textarea>
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
 </form>
-
-<textarea rows="4" cols="50" name="blogpost[content]" form="blog_post_form" value="<%= @blogpost.content %>"></textarea>
+</div>
