@@ -3,7 +3,7 @@
 <h1><%= @blogpost.title.titleize %></h1>
 
 <% if Helpers.current_user(session) == @blogpost.user %>
-    <h4><a href="/blogposts/<%= @blogpost.id %>/edit">Edit</a></h4>
+    <button><a href="/blogposts/<%= @blogpost.id %>/edit">Edit</a></button>
     <form action="/blogposts/<%= @blogpost.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete">
@@ -29,7 +29,11 @@
             <small><strong>Posted by: <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a></strong></small>
         </div>    
         <% if comment.user == Helpers.current_user(session) %>
-            <button>Edit</button> <button>Delete</button>
+            <button><a href="/comments/<%= comment.id %>/edit">Edit</a></button> 
+            <form action="/comments/<%= comment.id %>/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete">
+            </form>
         <% end %>
     </div>
     <br>

@@ -3,7 +3,7 @@
 <form action="/comments/<%= @comment.id %>" method="post" id="comment_form">
     <input type="hidden" name="_method" value="patch">   
     <div class="form-group">
-        <textarea class="form-control" name="blogpost[content]" form="comment_form"><%= @comment.content %></textarea>
+        <textarea class="form-control" name="comment[content]" form="comment_form"><%= @comment.content %></textarea>
     </div>
     <button type="submit" class="btn btn-info">Submit</button>
 </form>
