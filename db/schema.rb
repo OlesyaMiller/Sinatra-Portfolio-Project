@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20200331144945) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.string   "title"
-    t.string   "author_name"
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at"

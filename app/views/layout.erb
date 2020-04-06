@@ -7,41 +7,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Travel Blog</title>
     <style>
-        body {
-            background-image: url("https://img2.thejournal.ie/article/4714713/river?version=4714719&width=1340") ;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            height: 100%;
-        }
-        h1, h2, h3, h4, h5 {
-            color: white;
-        }
         a {
-            color: rgba(210, 245, 201);
+            color: rgba(20, 219, 156);
             text-decoration: underline;
         }
         .content {
             background-color: rgba(255, 255, 255, 0.5);
         }
         a:hover {
-            color: rgba(20, 219, 156);
-        }
-        .notification {
-            color: white;
-        }
-        small {
-            color: white;
-        }
-        .color {
-            color: white;
+            color: rgba(210, 245, 201);
         }
     </style>
   </head>
 
   <body>
   <% if Helpers.is_logged_in?(session) %>
-    <header class="navbar navbar-expand bg-dark navbar-dark flex-column flex-md-row bd-navbar">
+    <header class="navbar navbar-expand bg-teal flex-column flex-md-row bd-navbar border-bottom">
         <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item"><a class="nav-link" href="/users/<%= Helpers.current_user(session).id %>">My Blog Posts</a></li>

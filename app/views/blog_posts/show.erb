@@ -12,6 +12,11 @@
 <br>
 <h4><small>Written by: </small><a href="/users/<%= @blogpost.user_id %>"><%= @blogpost.user.username %></a></h4>
 <small><strong>Created: <%= @blogpost.created_at %></strong></small>
+
+<% if @blogpost.updated_at != @blogpost.created_at %>
+    <small><strong>Updated: <%= @blogpost.updated_at %></strong></small>
+<% end %>
+
 <br><br>
 <div class="border rounded p-3 content"><%= @blogpost.content %></div>
 <br><br>
@@ -23,6 +28,9 @@
             <small><strong>Created: <%= comment.created_at %></strong></small><br>
             <small><strong>Posted by: <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a></strong></small>
         </div>    
+        <% if comment.user == Helpers.current_user(session) %>
+            <button>Edit</button> <button>Delete</button>
+        <% end %>
     </div>
     <br>
 <% end %>

@@ -1,6 +1,20 @@
+<head>
+    <style>
+        body {
+            background-image: url("https://www.smartertravel.com/uploads/2017/06/elephant-spotted-on-an-african-safari_t20_XzaeE9-1400x500.jpg") ;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            height: 100%;
+            color: white;
+        }
+    </style>
+</head>
+
 <div class="container">
     <br><br>
-    <h1>Welcome to Travel Blog!</h1>
+    <h1>Welcome to Sinatra Travel Blog!</h1>
+    <p>In this community you can share your travel adventures and read and comment on the stories of others!</p>
 
     <% if !Helpers.is_logged_in?(session) %>
         <a href="/login">Log In</a> <a href="/signup">Sign Up</a>
