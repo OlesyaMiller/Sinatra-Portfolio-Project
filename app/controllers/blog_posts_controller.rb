@@ -2,7 +2,7 @@ class BlogPostsController < ApplicationController
 
     get '/blogposts' do 
         @blogposts = BlogPost.all 
-        erb :'blog_posts/all'
+        erb :'blog_posts/index'
     end
 
     get '/blogposts/new' do 
@@ -13,11 +13,13 @@ class BlogPostsController < ApplicationController
         if Helpers.is_logged_in?(session)
             blogpost = BlogPost.create(params)
             if blogpost.invalid?
+                flash[:notice] = "Please make sure to fill out all the fields"
                 redirect to '/blogposts/new'
             else
                 user = Helpers.current_user(session)
                 blogpost.user = user 
                 blogpost.save 
+                flash[:notice] = "You have just created a new blog post!" #####
                 redirect to "/blogposts/#{blogpost.id}"
             end
         else
@@ -28,20 +30,6 @@ class BlogPostsController < ApplicationController
     get '/blogposts/:id' do 
         @blogpost = BlogPost.find_by_id(params["id"])
         erb :'blog_posts/show'
-    end
-
-    post '/comments' do    
-        comment = Comment.new(content: params["content"])
-        blogpost = BlogPost.find_by_id(params["blog_post_id"])
-        if comment && blogpost 
-            user = Helpers.current_user(session)
-            comment.user = user 
-            comment.blog_post = blogpost 
-            comment.save 
-            redirect to "/blogposts/#{blogpost.id}"
-        else
-            redirect to '/'
-        end
     end
 
     get '/blogposts/:id/edit' do 

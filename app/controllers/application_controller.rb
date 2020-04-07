@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base 
+    register Sinatra::Flash #important line!!!!
 
     configure do
         set :views, 'app/views'
@@ -9,5 +10,4 @@ class ApplicationController < Sinatra::Base
     get '/' do 
         erb :welcome 
     end
-
 end

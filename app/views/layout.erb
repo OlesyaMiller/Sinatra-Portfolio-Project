@@ -11,11 +11,11 @@
             color: rgba(20, 219, 156);
             text-decoration: underline;
         }
-        .content {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
         a:hover {
             color: rgba(210, 245, 201);
+        }
+        .container {
+            margin-top: 10px;
         }
     </style>
   </head>
@@ -34,7 +34,14 @@
         </div>  
         <span class="navbar-text float-right"><strong>Signed in as <a href="/users/<%= Helpers.current_user(session).id %>"><%= Helpers.current_user(session).username %></strong></a></span>
     </header>
-    <br><br>
+  
+  <% end %>
+
+  <% flash.keys.each do |type| %>
+    <div data-alert class="flash <%= type %> alert-box radius" style="background-color: orange; color: white">
+      <%= flash[type] %>
+      <a href="#" class="close">&times;</a>
+    </div>
   <% end %>
 
         <%= yield %>

@@ -8,7 +8,6 @@
     <% @blogposts.each do |blogpost| %>  
         <div class="container">
             <h4><a href="/blogposts/<%= blogpost.id %>"><%= blogpost.title.titleize %></a></h4>
-            <small><strong>Created: <%= blogpost.created_at %></strong></small><br>
         </div>
     <% end %>
 <% end %>    

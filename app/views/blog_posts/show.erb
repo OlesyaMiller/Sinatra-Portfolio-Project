@@ -13,7 +13,7 @@
 <h4><small>Written by: </small><a href="/users/<%= @blogpost.user_id %>"><%= @blogpost.user.username %></a></h4>
 <small><strong>Created: <%= @blogpost.created_at %></strong></small>
 
-<% if @blogpost.updated_at != @blogpost.created_at %>
+<% if @blogpost.updated_at.to_i != @blogpost.created_at.to_i %>
     <small><strong>Updated: <%= @blogpost.updated_at %></strong></small>
 <% end %>
 
@@ -26,6 +26,9 @@
         <div class="border rounded p-3 content">
             <%= comment.content %><br>
             <small><strong>Created: <%= comment.created_at %></strong></small><br>
+            <% if comment.updated_at.to_i != comment.created_at.to_i %>
+                <small><strong>Updated: <%= comment.updated_at %></strong></small>
+            <% end %><br>
             <small><strong>Posted by: <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a></strong></small>
         </div>    
         <% if comment.user == Helpers.current_user(session) %>
